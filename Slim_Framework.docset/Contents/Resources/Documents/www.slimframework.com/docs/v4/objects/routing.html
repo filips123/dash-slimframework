@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><!-- Mirrored from www.slimframework.com/docs/v4/objects/routing.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 06 Dec 2020 17:50:48 GMT --><!-- Added by HTTrack --><head><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<html lang="en"><!-- Mirrored from www.slimframework.com/docs/v4/objects/routing.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 May 2021 18:05:30 GMT --><!-- Added by HTTrack --><head><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
 
         <meta charset="utf-8"/>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport"/>
@@ -474,6 +474,10 @@ Example:</p>
 <p>Alternatively, you can take advantage of PHP’s <code class="language-plaintext highlighter-rouge">::class</code> operator which works well with IDE lookup systems and produces the same result:</p>
 
 <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$app</span><span class="o">-&gt;</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="err">\</span><span class="nc">HomeController</span><span class="o">::</span><span class="n">class</span> <span class="mf">.</span> <span class="s1">':home'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>You can also pass an array, the first element of which will contain the name of the class, and the second will contain the name of the method being called:</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$app</span><span class="o">-&gt;</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="p">[</span><span class="err">\</span><span class="nc">HomeController</span><span class="o">::</span><span class="n">class</span><span class="p">,</span> <span class="s1">'home'</span><span class="p">]);</span>
 </code></pre></div></div>
 
 <p>In this code above we are defining a <code class="language-plaintext highlighter-rouge">/</code> route and telling Slim to execute the <code class="language-plaintext highlighter-rouge">home()</code> method on the <code class="language-plaintext highlighter-rouge">HomeController</code> class.</p>
@@ -1023,4 +1027,4 @@ action class.</p>
 
 
 
-</body><!-- Mirrored from www.slimframework.com/docs/v4/objects/routing.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 06 Dec 2020 17:50:48 GMT --></html>
+</body><!-- Mirrored from www.slimframework.com/docs/v4/objects/routing.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 May 2021 18:05:30 GMT --></html>

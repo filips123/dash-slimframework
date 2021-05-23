@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><!-- Mirrored from www.slimframework.com/docs/v4/start/web-servers.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 06 Dec 2020 17:50:47 GMT --><!-- Added by HTTrack --><head><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<html lang="en"><!-- Mirrored from www.slimframework.com/docs/v4/start/web-servers.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 May 2021 18:05:29 GMT --><!-- Added by HTTrack --><head><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
 
         <meta charset="utf-8"/>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport"/>
@@ -65,6 +65,13 @@ It may also be useful for testing purposes or for application demonstrations tha
 
 <h2 id="apache-configuration"><a class="dashAnchor" name="//apple_ref/cpp/Section/Apache%20configuration"></a>Apache configuration</h2>
 
+<p>Ensure that the Apache <code class="language-plaintext highlighter-rouge">mod_rewrite</code> module is installed and enabled.
+In order to enable <code class="language-plaintext highlighter-rouge">mod_rewrite</code> you can type the following command in the terminal:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo a2enmod rewrite
+sudo a2enmod actions
+</code></pre></div></div>
+
 <p>Ensure your <code class="language-plaintext highlighter-rouge">.htaccess</code> and <code class="language-plaintext highlighter-rouge">index.php</code> files are in the same
 public-accessible directory. The <code class="language-plaintext highlighter-rouge">.htaccess</code> file should contain this code:</p>
 
@@ -74,10 +81,61 @@ RewriteCond %<span class="o">{</span>REQUEST_FILENAME<span class="o">}</span> <s
 RewriteRule ^ index.php <span class="o">[</span>QSA,L]
 </code></pre></div></div>
 
-<p>This <code class="language-plaintext highlighter-rouge">.htaccess</code> file requires URL rewriting. Make sure to enable Apache’s mod_rewrite module and your virtual host is configured with the <code class="language-plaintext highlighter-rouge">AllowOverride</code> option so that the <code class="language-plaintext highlighter-rouge">.htaccess</code> rewrite rules can be used:</p>
+<p>This <code class="language-plaintext highlighter-rouge">.htaccess</code> file requires URL rewriting.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AllowOverride All
+<p>Make sure to enable Apache’s <code class="language-plaintext highlighter-rouge">mod_rewrite</code> module and your virtual host is configured
+with the <code class="language-plaintext highlighter-rouge">AllowOverride</code> option so that the <code class="language-plaintext highlighter-rouge">.htaccess</code> rewrite rules can be used:
+To do this, the file <code class="language-plaintext highlighter-rouge">/etc/apache2/apache2.conf</code> must be opened in an editor with root privileges.</p>
+
+<p>Change the <code class="language-plaintext highlighter-rouge">&lt;Directory ...&gt;</code> directive from <code class="language-plaintext highlighter-rouge">AllowOveride None</code> to <code class="language-plaintext highlighter-rouge">AllowOveride All</code>.</p>
+
+<p><strong>Example</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Directory /var/www/&gt;
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+&lt;/Directory&gt;
 </code></pre></div></div>
+
+<p>Finally, the configuration of Apache must be reloaded.
+To restart Apache web server, enter:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo service apache2 restart
+</code></pre></div></div>
+
+<p>This command works on most Debian/Ubuntu variants.
+For all other Linux distributions, please consult 
+the documentation of your specific Linux distribution 
+to find out how to restart Apache.</p>
+
+<p><strong>Running in a sub-directory</strong></p>
+
+<p>This example assumes that the front controller is located in <code class="language-plaintext highlighter-rouge">public/index.php</code>.</p>
+
+<p>To “redirect” the sub-directory to the front-controller create a second
+<code class="language-plaintext highlighter-rouge">.htaccess</code> file above the <code class="language-plaintext highlighter-rouge">public/</code> directory.</p>
+
+<p>The second <code class="language-plaintext highlighter-rouge">.htaccess</code> file should contain this code:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RewriteEngine on
+RewriteRule ^$ public/ [L]
+RewriteRule (.*) public/$1 [L]
+</code></pre></div></div>
+
+<p>You may also set the base path so that the router can 
+match the URL from the browser with the path set in the route registration.
+This is done with the <code class="language-plaintext highlighter-rouge">setBasePath()</code> method.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$app</span><span class="o">-&gt;</span><span class="nf">setBasePath</span><span class="p">(</span><span class="s1">'/myapp'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>Read more</strong></p>
+
+<ul>
+  <li><a href="https://akrabat.com/running-slim-4-in-a-subdirectory/">Running Slim 4 in a subdirectory</a></li>
+  <li><a href="https://github.com/selective-php/basepath">Slim 4 base path middleware</a></li>
+</ul>
 
 <h2 id="nginx-configuration"><a class="dashAnchor" name="//apple_ref/cpp/Section/Nginx%20configuration"></a>Nginx configuration</h2>
 
@@ -597,4 +655,4 @@ Assuming that your Server’s Root is <code class="language-plaintext highlighte
 
 
 
-</body><!-- Mirrored from www.slimframework.com/docs/v4/start/web-servers.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 06 Dec 2020 17:50:47 GMT --></html>
+</body><!-- Mirrored from www.slimframework.com/docs/v4/start/web-servers.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 May 2021 18:05:29 GMT --></html>

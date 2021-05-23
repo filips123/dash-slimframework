@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><!-- Mirrored from www.slimframework.com/docs/v4/objects/request.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 06 Dec 2020 17:50:48 GMT --><!-- Added by HTTrack --><head><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<html lang="en"><!-- Mirrored from www.slimframework.com/docs/v4/objects/request.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 May 2021 18:05:30 GMT --><!-- Added by HTTrack --><head><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
 
         <meta charset="utf-8"/>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport"/>
@@ -185,22 +185,11 @@ methods to inspect the HTTP request’s URL parts:</p>
   <li>getHost()</li>
   <li>getPort()</li>
   <li>getPath()</li>
-  <li>getBasePath()</li>
   <li>getQuery() <small>(returns the full query string, e.g. <code class="language-plaintext highlighter-rouge">a=1&amp;b=2</code>)</small></li>
   <li>getFragment()</li>
-  <li>getBaseUrl()</li>
 </ul>
 
 <p>You can get the query parameters as an associative array on the Request object using <code class="language-plaintext highlighter-rouge">getQueryParams()</code>.</p>
-
-<div class="alert alert-info">
-    <div><strong>Base Path</strong></div>
-    If your Slim application's front-controller lives in a physical subdirectory
-    beneath your document root directory, you can fetch the HTTP request's physical
-    base path (relative to the document root) with the Uri object's <code>getBasePath()</code>
-    method. This will be an empty string if the Slim application is installed
-    in the document root's top-most directory.
-</div>
 
 <h2 id="the-request-headers"><a class="dashAnchor" name="//apple_ref/cpp/Section/The%20Request%20Headers"></a>The Request Headers</h2>
 
@@ -920,4 +909,4 @@ In your applications middleware often need to pass along information to your rou
 
 
 
-</body><!-- Mirrored from www.slimframework.com/docs/v4/objects/request.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 06 Dec 2020 17:50:48 GMT --></html>
+</body><!-- Mirrored from www.slimframework.com/docs/v4/objects/request.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 May 2021 18:05:30 GMT --></html>
