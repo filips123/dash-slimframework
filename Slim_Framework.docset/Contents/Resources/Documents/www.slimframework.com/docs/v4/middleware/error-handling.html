@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><!-- Mirrored from www.slimframework.com/docs/v4/middleware/error-handling.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 May 2021 18:05:30 GMT --><!-- Added by HTTrack --><head><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<html lang="en"><!-- Mirrored from www.slimframework.com/docs/v4/middleware/error-handling.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 04 Jul 2021 18:07:57 GMT --><!-- Added by HTTrack --><head><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
 
         <meta charset="utf-8"/>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport"/>
@@ -270,7 +270,7 @@ write the following.</p>
 </ul>
 
 <p>You can extend the <code class="language-plaintext highlighter-rouge">HttpSpecializedException</code> class if they need any other response codes that we decide not to provide with the base repository. Example if you wanted a 504 gateway timeout exception that behaves like the native ones you would do the following:</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">HttpForbiddenException</span> <span class="kd">extends</span> <span class="nc">HttpException</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">HttpForbiddenException</span> <span class="kd">extends</span> <span class="nc">HttpSpecializedException</span>
 <span class="p">{</span>
     <span class="k">protected</span> <span class="nv">$code</span> <span class="o">=</span> <span class="mi">504</span><span class="p">;</span>
     <span class="k">protected</span> <span class="nv">$message</span> <span class="o">=</span> <span class="s1">'Gateway Timeout.'</span><span class="p">;</span>
@@ -647,6 +647,22 @@ write the following.</p>
                                 
                                 
                             
+                        
+                            
+                            
+
+                                
+                                
+
+                                
+                                
+
+                                
+
+                                
+                                
+                                
+                            
 
                                 
                                 
@@ -692,4 +708,4 @@ write the following.</p>
 
 
 
-</body><!-- Mirrored from www.slimframework.com/docs/v4/middleware/error-handling.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 May 2021 18:05:30 GMT --></html>
+</body><!-- Mirrored from www.slimframework.com/docs/v4/middleware/error-handling.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 04 Jul 2021 18:07:57 GMT --></html>
